@@ -1,8 +1,15 @@
-#include <QApplication>
 
-int main (int argc, char *argv[])
+#include "main.h"
+#include "ksql.h"
+
+IMPLEMENT_APP(ksqlApp)
+
+bool ksqlApp::OnInit()
 {
-    QApplication app(argv, args);
 
-    return app.exec();
+    Ksql *ksql = new Ksql(wxT("Ksql"));
+
+    ksql->Show(true);
+
+    return true;
 }
