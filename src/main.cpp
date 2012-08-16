@@ -1,6 +1,7 @@
 
 #include "main.h"
 #include "ksql.h"
+#include "connect.h"
 
 IMPLEMENT_APP(ksqlApp)
 
