@@ -1,24 +1,38 @@
-
 CXX = $(shell wx-config --cxx)
 
 PROGRAM = ksql
 
-#OBJECTS = $(PROGRAM).o
-OBJECTS := $(patsubst %.cpp,%.o,$(wildcard *.cpp))
+#VPATH = src
+
+#OBJECTS := $(patsubst %.cpp,%.o,$(wildcard *.cpp))
 
 #implementation
 
-.SUFFIXES: .o .cpp
+#.SUFFIXES: .o .cpp
 
-.cpp.o :
-	$(CXX) -c `wx-config --cxxflags` -o $@ $<
+#.cpp.o :
+#	$(CXX) -c `wx-config --cxxflags` -o $@ $<
 	
-all:	$(PROGRAM)
+#all:	$(PROGRAM)
+
+#$(PROGRAM):		$(OBJECTS)
+#	$(CXX) -o $(PROGRAM) $(OBJECTS) `wx-config --cxxflags --libs`
+
+
+OBJECTS := main.o ksql.o
 
 $(PROGRAM):		$(OBJECTS)
 	$(CXX) -o $(PROGRAM) $(OBJECTS) `wx-config --cxxflags --libs`
 
+main.o: src/main.cpp src/main.h
+	$(CXX) -c `wx-config --cxxflags` src/main.cpp -o main.o
+
+ksql.o: src/ksql.cpp src/ksql.h
+	$(CXX) -c `wx-config --cxxflags` src/ksql.cpp -o ksql.o
+
+
+
 clean:
 
-	rm -f *.o $(PROGRAM)
+	-rm -f *.o
 
