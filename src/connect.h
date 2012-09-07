@@ -10,4 +10,15 @@ class connectDialog : public wxDialog
                 long style = wxDEFAULT_DIALOG_STYLE);
 
         wxPanel *panel;
+
+        //wxBoxSizer *hboxPanel;
+        //wxBoxSizer *vbox;
+        wxBoxSizer *hbox;
+
+        wxFlexGridSizer *fgs;
+
+        wxTextCtrl *hostTxt;
+        wxTextCtrl *userTxt;
+        wxTextCtrl *passTxt;
+        wxTextCtrl *portTxt;
 };
